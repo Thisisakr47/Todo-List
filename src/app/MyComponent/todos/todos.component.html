@@ -1,0 +1,11 @@
+<div class="text-center p-0">
+    <app-add-todo (add_todo)="addtodo($event)"></app-add-todo>
+    <div *ngIf="this.todos.length === 0; else elseBlock">No Todos to display</div>
+    <ng-template #elseBlock>
+        <ul class="p-0 d-flex justify-content-center" *ngFor="let i of todos; index as j;">
+            <!-- <li>{{i.id}} - {{i.title}} - {{i.body}} - {{i.active}}</li> -->
+            <app-todo-item [todo]="i" [pos]="j" (delete_todo)="deletetodo($event)" (toggle_todo)="toggletodo($event)">
+            </app-todo-item>
+        </ul>
+    </ng-template>
+</div>
